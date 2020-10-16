@@ -1,0 +1,3 @@
+% Script to plot contour plots for cost functionclear all;clc;close all;data = load('ex1data1.txt');x = data(:, 1); y = data(:, 2);m = length(y); % number of training examplesX = [ones(size(x)) x];theta0 = linspace(-5000,5000,100);theta1 = linspace(-500,500,100);[T0,T1] = meshgrid(theta0,theta1);J = zeros(size(T0));for cnt1 = 1:size(T0,1)  for cnt2 = 1:size(T0,2)    t0 = T0(cnt1,cnt2);    t1 = T1(cnt1,cnt2);    thetavec = [t0;t1];    cost = sum((X*thetavec - y).^2)/(2*m);    J(cnt1,cnt2) = cost;    end
+end
+figure;contour(T0,T1,J,100);xlabel('Theta0');ylabel('Theta1');
